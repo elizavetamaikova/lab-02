@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.12)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+
 option(BUILD_COVERAGE "Build coverage" OFF)
 
 set(
@@ -61,7 +62,7 @@ if(BUILD_COVERAGE)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
   find_package(codecov)
   # TODO: change template word to project name and delete this comment
-  enable_project_coverage(lab-02-cache)
+  enable_project_coverage(lab_cache)
   enable_project_coverage(tests)
   list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()

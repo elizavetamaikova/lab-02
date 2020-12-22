@@ -61,7 +61,7 @@ if(BUILD_COVERAGE)
   list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
   find_package(codecov)
   # TODO: change template word to project name and delete this comment
-  enable_project_coverage(lab-02-cache)
+  enable_project_coverage(lab_cache)
   enable_project_coverage(tests)
   list(APPEND LCOV_REMOVE_PATTERNS "'${PROJECT_SOURCE_DIR}/tests/*'")
   coverage_evaluate()

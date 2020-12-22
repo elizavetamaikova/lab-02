@@ -3,13 +3,16 @@
 // Created by lizer on 14.12.2020.
 //
 #include "CacheExploration.hpp"
-CacheExploration::CacheExploration(uint32_t L1, uint32_t L3){
+CacheExploration::CacheExploration(uint32_t L1, uint32_t L3) {
   uint32_t current = L1 / 2;
-  while (current < 3 * L3 / 2) {
-    _mas.push_back(current * 256);
+  uint32_t max = 3 * L3 / 2;
+  uint32_t s = 256;
+  uint32_t last = 3 * L3 * 128;
+  while (current < max) {
+    _mas.push_back(current * s);
     current *= 2;
   }
-  _mas.push_back(3 * L3 * 128);
+  _mas.push_back(last);
   DirectTest();
   ReverseTest();
   RandomTest();
@@ -30,7 +33,6 @@ void CacheExploration::DirectTest() {
   int64_t EntireTime = 0;
   uint32_t ArrInc = 16;
   double TimeSub = 1000.0;
-
   struct Cache NewCacheExploration;
 
   for (uint32_t i = 0; i < ArraySize; ++i) {
@@ -158,18 +160,23 @@ void CacheExploration::WarmupRandom(uint32_t* array, uint32_t size) {
 void CacheExploration::ClearOutput() {
   std::string Out = "";
   uint32_t NumberOfWays = _result.size()/_mas.size();
+  uint32_t variant;
   for (uint32_t j = 0; j < NumberOfWays; ++j) {
     Out += "investigation:\n";
     Out += " travel_variant: ";
-    Out += _result[j*_result.size()/NumberOfWays].type;
+    variant = j*_result.size()/NumberOfWays;
+    Out += _result[variant].type;
     Out += "\n experiments\n";
-    for (uint32_t i = (_result.size() / NumberOfWays) * j;
-         i < (_result.size() / NumberOfWays) * (j + 1); ++i) {
+    uint32_t numberMin = (_result.size() / NumberOfWays) * j;
+    uint32_t numberMax = (_result.size() / NumberOfWays) * (j + 1);
+    for (uint32_t i = numberMin; i < numberMax; ++i) {
       Out += "- experiment:\n";
       Out += "  number: ";
-      Out += std::to_string(_result[i].number + 1);
+      uint32_t number = _result[i].number + 1;
+      Out += std::to_string(number);
       Out += "\n  input_data:\n   buffer_size: ";
-      Out += std::to_string(_mas[i % _mas.size()] / 256);
+      uint32_t buffer_size = _mas[i % _mas.size()] / 256;
+      Out += std::to_string(buffer_size);
       Out += " Kib\n";
       Out += "  results:\n   duration: ";
       Out += std::to_string(_result[i].time);
@@ -178,16 +185,3 @@ void CacheExploration::ClearOutput() {
   }
   std::cout << Out;
 }
-void CacheExploration::Graf() {
-  std::string Coord = "";
-  for (auto i : _result) {
-    Coord += "(";
-    Coord += std::to_string(_mas[i.number] / 256);
-    Coord += ";";
-    Coord += std::to_string(i.time);
-    Coord += ")";
-  }
-  std::cout << Coord << std::endl;
-}
-
-#include "CacheExploration.hpp"

@@ -133,7 +133,7 @@ cache_size['3'] = 8 mb;
 ### Результаты
 
 Ниже представлен формат и пример отчета:
-
+'
 investigation:
  travel_variant: Direct
  experiments
@@ -322,6 +322,6 @@ investigation:
   input_data:
    buffer_size: 12288 Kib
   results:
-   duration: 3265.401000 ms
+   duration: 3265.401000 ms'
    
 ![Cache](./images/cache.png)

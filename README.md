@@ -324,4 +324,5 @@ investigation:
   results:
    duration: 3540.910000 ms
    
+```   
 ![lab_cache](./images/cache.jpg)

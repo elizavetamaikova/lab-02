@@ -5,5 +5,5 @@
 TEST(Example, EmptyTest) {
     EXPECT_TRUE(true);
     CacheExploration qwe(64, 8192);
-    //std::cout << "Hello";
+    std::cout << qwe;
 }

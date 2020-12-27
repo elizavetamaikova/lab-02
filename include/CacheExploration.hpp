@@ -12,27 +12,28 @@
 #include <string>
 
 struct Cache{
-  std::string type;
-  uint32_t number;
-  double time;
+    std::string type;
+    uint32_t number;
+    double time;
 };
 
 class CacheExploration {
- public:
-  CacheExploration(uint32_t L1, uint32_t L3);
-  ~CacheExploration();
-  void WarmupDirect(uint32_t* array, uint32_t size);
-  void WarmupReverse(uint32_t* array, uint32_t size);
-  void WarmupRandom(uint32_t* array, uint32_t size);
-  uint32_t* CreateArray(uint32_t size);
-  void DirectTest();
-  void ReverseTest();
-  void RandomTest();
-  void ClearOutput();
-  void Graf();
- private:
-  std::vector<struct Cache> _result;
-  std::vector<uint32_t> _mas;
+public:
+    CacheExploration(uint32_t L1, uint32_t L3);
+    ~CacheExploration();
+    void WarmupDirect(uint32_t* array, uint32_t size);
+    void WarmupReverse(uint32_t* array, uint32_t size);
+    void WarmupRandom(uint32_t* array, uint32_t size);
+    uint32_t* CreateArray(uint32_t size);
+    void DirectTest();
+    void ReverseTest();
+    void RandomTest();
+    void ClearOutput();
+    void Graf();
+    friend std::ostream& operator << (std::ostream &out, const CacheExploration& r);
+private:
+    std::vector<struct Cache> _result;
+    std::vector<uint32_t> _mas;
 };
 
-#endif  // TEMPLATE_CACHEEXPLORATION_HPP
+#endif // TEMPLATE_CACHEEXPLORATION_HPP

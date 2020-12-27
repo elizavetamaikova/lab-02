@@ -132,6 +132,7 @@ cache_size['3'] = 8 mb;
 
 ### Результаты
 
+<<<<<<< HEAD
 
 ```yaml
 investigation:
@@ -345,3 +346,198 @@ investigation:
          duration: "8804mcs"
    
 ![lab_cache](./images/cache.png)
+=======
+Ниже представлен формат и пример отчета:
+'
+investigation:
+ travel_variant: Direct
+ experiments
+- experiment:
+  number: 1
+  input_data:
+   buffer_size: 32 Kib
+  results:
+   duration: 1.358000 ms
+- experiment:
+  number: 2
+  input_data:
+   buffer_size: 64 Kib
+  results:
+   duration: 2.671000 ms
+- experiment:
+  number: 3
+  input_data:
+   buffer_size: 128 Kib
+  results:
+   duration: 5.282000 ms
+- experiment:
+  number: 4
+  input_data:
+   buffer_size: 256 Kib
+  results:
+   duration: 10.258000 ms
+- experiment:
+  number: 5
+  input_data:
+   buffer_size: 512 Kib
+  results:
+   duration: 20.723000 ms
+- experiment:
+  number: 6
+  input_data:
+   buffer_size: 1024 Kib
+  results:
+   duration: 43.646000 ms
+- experiment:
+  number: 7
+  input_data:
+   buffer_size: 2048 Kib
+  results:
+   duration: 90.668000 ms
+- experiment:
+  number: 8
+  input_data:
+   buffer_size: 4096 Kib
+  results:
+   duration: 179.454000 ms
+- experiment:
+  number: 9
+  input_data:
+   buffer_size: 8192 Kib
+  results:
+   duration: 307.842000 ms
+- experiment:
+  number: 10
+  input_data:
+   buffer_size: 12288 Kib
+  results:
+   duration: 454.075000 ms
+investigation:
+ travel_variant: Reverse
+ experiments
+- experiment:
+  number: 1
+  input_data:
+   buffer_size: 32 Kib
+  results:
+   duration: 1.196000 ms
+- experiment:
+  number: 2
+  input_data:
+   buffer_size: 64 Kib
+  results:
+   duration: 2.397000 ms
+- experiment:
+  number: 3
+  input_data:
+   buffer_size: 128 Kib
+  results:
+   duration: 5.167000 ms
+- experiment:
+  number: 4
+  input_data:
+   buffer_size: 256 Kib
+  results:
+   duration: 10.712000 ms
+- experiment:
+  number: 5
+  input_data:
+   buffer_size: 512 Kib
+  results:
+   duration: 21.523000 ms
+- experiment:
+  number: 6
+  input_data:
+   buffer_size: 1024 Kib
+  results:
+   duration: 41.471000 ms
+- experiment:
+  number: 7
+  input_data:
+   buffer_size: 2048 Kib
+  results:
+   duration: 82.357000 ms
+- experiment:
+  number: 8
+  input_data:
+   buffer_size: 4096 Kib
+  results:
+   duration: 165.619000 ms
+- experiment:
+  number: 9
+  input_data:
+   buffer_size: 8192 Kib
+  results:
+   duration: 312.929000 ms
+- experiment:
+  number: 10
+  input_data:
+   buffer_size: 12288 Kib
+  results:
+   duration: 479.801000 ms
+investigation:
+ travel_variant: Random
+ experiments
+- experiment:
+  number: 1
+  input_data:
+   buffer_size: 32 Kib
+  results:
+   duration: 8.610000 ms
+- experiment:
+  number: 2
+  input_data:
+   buffer_size: 64 Kib
+  results:
+   duration: 17.237000 ms
+- experiment:
+  number: 3
+  input_data:
+   buffer_size: 128 Kib
+  results:
+   duration: 35.975000 ms
+- experiment:
+  number: 4
+  input_data:
+   buffer_size: 256 Kib
+  results:
+   duration: 74.277000 ms
+- experiment:
+  number: 5
+  input_data:
+   buffer_size: 512 Kib
+  results:
+   duration: 150.970000 ms
+- experiment:
+  number: 6
+  input_data:
+   buffer_size: 1024 Kib
+  results:
+   duration: 276.234000 ms
+- experiment:
+  number: 7
+  input_data:
+   buffer_size: 2048 Kib
+  results:
+   duration: 575.484000 ms
+- experiment:
+  number: 8
+  input_data:
+   buffer_size: 4096 Kib
+  results:
+   duration: 1059.293000 ms
+- experiment:
+  number: 9
+  input_data:
+   buffer_size: 8192 Kib
+  results:
+   duration: 2178.019000 ms
+- experiment:
+  number: 10
+  input_data:
+   buffer_size: 12288 Kib
+  results:
+   duration: 3265.401000 ms'
+   
+![Cache](./images/cache.png)
+>>>>>>> ea69746946f230b29ae7e98c87172636463aef33

@@ -16,7 +16,6 @@ CacheExploration::CacheExploration(uint32_t L1, uint32_t L3) {
     DirectTest();
     ReverseTest();
     RandomTest();
-    //ClearOutput();
 }
 
 CacheExploration::~CacheExploration() {
@@ -25,14 +24,11 @@ CacheExploration::~CacheExploration() {
 void CacheExploration::DirectTest() {
     uint32_t* array = nullptr;
     uint32_t ArraySize = _mas.size();
-    uint32_t TestCount = 1000;
     uint32_t current = 0;
     uint32_t ArrayLength = 0;
     ArraySize += ArrayLength;
     current += current;
     int64_t EntireTime = 0;
-    uint32_t ArrInc = 16;
-    double TimeSub = 1000.0;
     struct Cache NewCacheExploration;
 
     for (uint32_t i = 0; i < ArraySize; ++i) {
@@ -59,14 +55,11 @@ void CacheExploration::DirectTest() {
 void CacheExploration::ReverseTest() {
     uint32_t* array = nullptr;
     uint32_t ArraySize = _mas.size();
-    uint32_t TestCount = 1000;
     uint32_t current = 0;
     uint32_t ArrayLength = 0;
     ArraySize += ArrayLength;
     current += current;
     int64_t EntireTime = 0;
-    uint32_t ArrInc = 16;
-    double TimeSub = 1000.0;
     struct Cache NewCacheExploration;
 
     for (uint32_t i = 0; i < ArraySize; ++i) {
@@ -98,14 +91,11 @@ uint32_t RandomNumber(uint32_t lower, uint32_t upper){
 void CacheExploration::RandomTest() {
     uint32_t* array = nullptr;
     uint32_t ArraySize = _mas.size();
-    uint32_t TestCount = 1000;
     uint32_t current = 0;
     uint32_t ArrayLength = 0;
     ArraySize += ArrayLength;
     current += current;
     int64_t EntireTime = 0;
-    uint32_t ArrInc = 16;
-    double TimeSub = 1000.0;
     struct Cache NewCacheExploration;
 
     for (uint32_t i = 0; i < ArraySize; ++i) {
@@ -138,14 +128,14 @@ uint32_t* CacheExploration::CreateArray(uint32_t size) {
 void CacheExploration::WarmupDirect(uint32_t* array, uint32_t size) {
     uint32_t current = 0;
     current += current;
-    for (uint32_t i = 0; i < size; i += 16)
+    for (uint32_t i = 0; i < size; i += ArrInc)
         current = array[i];
 }
 
 void CacheExploration::WarmupReverse(uint32_t* array, uint32_t size) {
     uint32_t current = 0;
     current += current;
-    for (uint32_t i = 0; i < size ; i += 16)
+    for (uint32_t i = 0; i < size ; i += ArrInc)
         current = array[size - i - 1];
 }
 
@@ -153,7 +143,7 @@ void CacheExploration::WarmupRandom(uint32_t* array, uint32_t size) {
     int size_int = static_cast<int>(size);
     uint32_t current = 0;
     current += current;
-    for (int i = size_int; i > 0 ; i -= 16)
+    for (int i = size_int; i > 0 ; i -= ArrInc)
         current = array[RandomNumber(0, size - 1)];
 }
 
@@ -170,12 +160,12 @@ std::ostream& operator<<(std::ostream &out, const CacheExploration& r){
         uint32_t numberMin = (r._result.size() / NumberOfWays) * j;
         uint32_t numberMax = (r._result.size() / NumberOfWays) * (j + 1);
         for (uint32_t i = numberMin; i < numberMax; ++i) {
+            uint32_t number = r._result[i].number + 1;
+            uint32_t buffer_size = r._mas[i % r._mas.size()] / 256;
             Out += "- experiment:\n";
             Out += "  number: ";
-            uint32_t number = r._result[i].number + 1;
             Out += std::to_string(number);
             Out += "\n  input_data:\n   buffer_size: ";
-            uint32_t buffer_size = r._mas[i % r._mas.size()] / 256;
             Out += std::to_string(buffer_size);
             Out += " Kib\n";
             Out += "  results:\n   duration: ";

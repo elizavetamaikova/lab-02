@@ -28,12 +28,13 @@ public:
     void DirectTest();
     void ReverseTest();
     void RandomTest();
-    void ClearOutput();
-    void Graf();
     friend std::ostream& operator << (std::ostream &out, const CacheExploration& r);
 private:
     std::vector<struct Cache> _result;
     std::vector<uint32_t> _mas;
+    const uint32_t TestCount = 1000;
+    const uint32_t ArrInc = 16;
+    const double TimeSub = 1000.0;
 };
 
 #endif // TEMPLATE_CACHEEXPLORATION_HPP

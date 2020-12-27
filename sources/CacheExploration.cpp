@@ -184,4 +184,5 @@ void CacheExploration::ClearOutput() {
     }
   }
   std::cout << Out;
+  //комментарий
 }
